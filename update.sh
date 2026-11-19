@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -x
+# set -x
+
 git pull && \
     git add -A || {
         echo "no changes to add" 
