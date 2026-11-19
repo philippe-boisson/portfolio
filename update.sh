@@ -1,10 +1,20 @@
 #!/bin/bash
+
 set -x
 git pull && \
-git add . || {
-  echo "no changes to add" 
-  exit 1
+    git add -A || {
+        echo "no changes to add" 
+        exit 1
+    }
+
+git commit -m "changes from $(uname -n) on $(date)" || {
+    echo "Failed to commit new changes"
+    exit 1
 }
 
-git commit -m "update" \
-git push && echo "OK"
+git push || {
+    echo "Failed to push new changes"
+    exit 1
+}
+
+echo "OK"
